@@ -157,8 +157,8 @@ export function useAuth(db, saveDB, switchDatabase, currentDbName, authCodes) {
 
   const initiateNaverLogin = useCallback(() => {
     // !!! 중요 !!!
-    // 아래 값들을 실제 네이버 개발자 센터에서 발급받은 정보로 교체해야 합니다.
-    const NAVER_CLIENT_ID = 'YOUR_NAVER_CLIENT_ID'; // 실제 클라이언트 ID로 교체
+    // 환경 변수(.env)에서 클라이언트 ID를 로드합니다.
+    const NAVER_CLIENT_ID = import.meta.env.VITE_NAVER_CLIENT_ID;
     const REDIRECT_URI = window.location.origin; // 현재 접속한 주소(IP 등)를 자동으로 사용
 
     const state = Math.random().toString(36).substring(2);
@@ -208,8 +208,8 @@ export function useAuth(db, saveDB, switchDatabase, currentDbName, authCodes) {
 
   const initiateKakaoLogin = useCallback(() => {
     // !!! 중요 !!!
-    // 아래 값들을 실제 카카오 개발자 센터에서 발급받은 정보로 교체해야 합니다.
-    const KAKAO_CLIENT_ID = 'YOUR_KAKAO_REST_API_KEY'; // 실제 REST API 키로 교체
+    // 환경 변수(.env)에서 클라이언트 ID를 로드합니다.
+    const KAKAO_CLIENT_ID = import.meta.env.VITE_KAKAO_CLIENT_ID;
     const REDIRECT_URI = window.location.origin; // 현재 접속한 주소(IP 등)를 자동으로 사용
 
     const url = `https://kauth.kakao.com/oauth/authorize?client_id=${KAKAO_CLIENT_ID}&redirect_uri=${encodeURIComponent(REDIRECT_URI)}&response_type=code`;
@@ -255,8 +255,8 @@ export function useAuth(db, saveDB, switchDatabase, currentDbName, authCodes) {
 
   const initiateGoogleLogin = useCallback(() => {
     // !!! 중요 !!!
-    // 아래 값들을 실제 구글 클라우드 콘솔에서 발급받은 정보로 교체해야 합니다.
-    const GOOGLE_CLIENT_ID = 'YOUR_GOOGLE_CLIENT_ID'; // 실제 클라이언트 ID로 교체
+    // 환경 변수(.env)에서 클라이언트 ID를 로드합니다.
+    const GOOGLE_CLIENT_ID = import.meta.env.VITE_GOOGLE_CLIENT_ID;
     const REDIRECT_URI = window.location.origin;
 
     const state = Math.random().toString(36).substring(2);

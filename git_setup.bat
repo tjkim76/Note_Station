@@ -20,6 +20,9 @@ if not exist .git (
     echo [1/6] 기존 Git 저장소를 감지했습니다.
 )
 
+:: node_modules 캐시 정리: .gitignore에 있어도 이미 추적 중인 경우를 대비해 캐시에서 삭제
+git rm -r --cached node_modules >nul 2>nul
+
 :: 2. Add
 echo [2/6] 파일을 스테이징합니다...
 git add .
@@ -32,6 +35,8 @@ if %errorlevel% neq 0 (
 ) else (
     echo 변경 사항이 없어 커밋을 건너뜁니다.
 )
+echo
+echo
 
 :: 4. Remote URL Input
 echo.
@@ -44,7 +49,8 @@ if "%REPO_URL%"=="" (
     pause
     exit /b
 )
-
+echo
+echo
 :: 5. Remote Add & Push
 echo [5/6] 원격 저장소 연결 및 푸시를 진행합니다...
 git remote remove origin >nul 2>nul
@@ -54,6 +60,7 @@ git push -u origin main
 
 if %errorlevel% equ 0 goto :finish
 
+echo
 echo.
 echo ========================================================
 echo [!] 푸시 실패: 원격 저장소에 이미 파일이 존재합니다.
