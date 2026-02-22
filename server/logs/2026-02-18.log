@@ -1,0 +1,14 @@
+[2026-02-18 14:00:53] [INFO] note-server listening on http://0.0.0.0:4000
+[2026-02-18 14:00:53] [INFO] [System] Next image cleanup scheduled at: 2/19/2026, 5:00:00 AM
+[2026-02-18 14:00:53] [INFO] Server running in HTTP mode (HTTPS certs not found)
+[2026-02-18 14:01:02] [INFO] note-server listening on http://0.0.0.0:4000
+[2026-02-18 14:01:02] [INFO] Server running in HTTP mode (HTTPS certs not found)
+[2026-02-18 14:01:02] [INFO] [System] Next image cleanup scheduled at: 2/19/2026, 5:00:00 AM
+[2026-02-18 14:01:26] [INFO] Client connected to WebSocket (user: president)
+[2026-02-18 14:03:01] [INFO] Client connected to WebSocket (user: president)
+[2026-02-18 14:03:09] [INFO] Client connected to WebSocket (user: president)
+[2026-02-18 14:03:14] [INFO] Client connected to WebSocket (user: president)
+[2026-02-18 14:03:25] [INFO] Client connected to WebSocket (user: president)
+[2026-02-18 14:03:28] [INFO] Client connected to WebSocket (user: president)
+[2026-02-18 14:03:35] [INFO] Client connected to WebSocket (user: president)
+[2026-02-18 14:04:07] [INFO] Client connected to WebSocket (user: president)

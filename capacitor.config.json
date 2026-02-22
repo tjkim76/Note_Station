@@ -1,0 +1,9 @@
+{
+  "appId": "com.notestation.app",
+  "appName": "Note Station",
+  "webDir": "dist",
+  "server": {
+    "androidScheme": "https"
+  },
+  "bundledWebRuntime": false
+}

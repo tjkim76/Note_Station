@@ -5,6 +5,11 @@ import path from 'node:path'
 import { fileURLToPath } from 'node:url'
 import mkcert from 'vite-plugin-mkcert'
 import { VitePWA } from 'vite-plugin-pwa'
+import progress from 'vite-plugin-progress'
+
+// 프로세스 명칭 설정
+process.title = 'note-station-web';
+console.log(`Vite PID: ${process.pid}`);
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url))
 
@@ -31,8 +36,12 @@ function ensurePwaAssets() {
   }
 }
 
-export default defineConfig({
+export default defineConfig(({ mode }) => ({
+  esbuild: {
+    drop: mode === 'production' ? ['console', 'debugger'] : [],
+  },
   plugins: [
+    progress(),
     react(), 
     ensurePwaAssets(), 
     mkcert(),
@@ -44,6 +53,9 @@ export default defineConfig({
         short_name: 'NoteStation',
         description: 'Evernote-style note taking station',
         theme_color: '#ffffff',
+        background_color: '#ffffff',
+        display: 'standalone',
+        start_url: '/',
         icons: [
           {
             src: 'pwa-192x192.png',
@@ -56,16 +68,51 @@ export default defineConfig({
             type: 'image/png'
           }
         ]
+      },
+      workbox: {
+        globPatterns: ['**/*.{js,css,html,ico,png,svg,woff2}'],
+        navigateFallback: 'index.html',
+      },
+      devOptions: {
+        enabled: true
       }
     })
   ],
   base: './',
   server: {
     https: false,
-    host: true
+    host: true,
+    proxy: {
+      '/api': {
+        target: 'http://localhost:4000',
+        changeOrigin: true,
+        secure: false
+      },
+      '/uploads': {
+        target: 'http://localhost:4000',
+        changeOrigin: true,
+        secure: false
+      }
+    }
+  },
+  preview: {
+    port: 3000,
+    host: true,
+    proxy: {
+      '/api': {
+        target: 'http://localhost:4000',
+        changeOrigin: true,
+        secure: false
+      },
+      '/uploads': {
+        target: 'http://localhost:4000',
+        changeOrigin: true,
+        secure: false
+      }
+    }
   },
   build: {
     outDir: 'dist',
     emptyOutDir: true
   }
-})
+}))

@@ -78,22 +78,67 @@ define(['./workbox-5a5d9309'], (function (workbox) { 'use strict';
    * See https://goo.gl/S9QRab
    */
   workbox.precacheAndRoute([{
-    "url": "sql-wasm.wasm",
-    "revision": "adf3b772bd5b646d050ce90d58b3db23"
-  }, {
     "url": "sql-wasm.js",
     "revision": "9b629335d3339b01f5b0b1ff22774d55"
   }, {
     "url": "registerSW.js",
     "revision": "402b66900e731ca748771b6fc5e7a068"
   }, {
-    "url": "index.html",
-    "revision": "8f810542e29c79f8793d323308d4e564"
+    "url": "pwa-512x512.png",
+    "revision": "ef593e1899bd8f423f7e747439aa1d46"
   }, {
-    "url": "assets/index-D7Mqmy0N.js",
+    "url": "pwa-192x192.png",
+    "revision": "ef593e1899bd8f423f7e747439aa1d46"
+  }, {
+    "url": "index.html",
+    "revision": "bec478694a9d58837ad6aebcf146f216"
+  }, {
+    "url": "favicon.ico",
+    "revision": "d89746888da2d9510b64a9f031eaecd5"
+  }, {
+    "url": "assets/upload-COgRW9-f.js",
     "revision": null
   }, {
-    "url": "assets/index-92-uZEk7.css",
+    "url": "assets/trash-5pbN9doL.js",
+    "revision": null
+  }, {
+    "url": "assets/trash-2-PYgddBW5.js",
+    "revision": null
+  }, {
+    "url": "assets/Sidebar-DB__TDWh.js",
+    "revision": null
+  }, {
+    "url": "assets/search-6T5g-zxl.js",
+    "revision": null
+  }, {
+    "url": "assets/pen-BUdYjEp0.js",
+    "revision": null
+  }, {
+    "url": "assets/NoteList-jtwXDTjp.js",
+    "revision": null
+  }, {
+    "url": "assets/Modals-C6lTkQtm.js",
+    "revision": null
+  }, {
+    "url": "assets/MainEditor-ZgkIHsf0.css",
+    "revision": null
+  }, {
+    "url": "assets/MainEditor-oSFbcZic.js",
+    "revision": null
+  }, {
+    "url": "assets/keyboard-Bf8OWpxA.js",
+    "revision": null
+  }, {
+    "url": "assets/index-CbfCBuWl.js",
+    "revision": null
+  }, {
+    "url": "assets/index-BS-ysbLf.js",
+    "revision": null
+  }, {
+    "url": "assets/index-B5oRhLwC.css",
+    "revision": null
+  }, {
+    "url": "assets/check-JDRjR72W.js",
     "revision": null
   }, {
     "url": "favicon.ico",
@@ -106,7 +151,7 @@ define(['./workbox-5a5d9309'], (function (workbox) { 'use strict';
     "revision": "ef593e1899bd8f423f7e747439aa1d46"
   }, {
     "url": "manifest.webmanifest",
-    "revision": "1466a4c7fb3bc857d35e490b2384606c"
+    "revision": "feaa1fe0bdb910270e23b8746bec0c3b"
   }], {});
   workbox.cleanupOutdatedCaches();
   workbox.registerRoute(new workbox.NavigationRoute(workbox.createHandlerBoundToURL("index.html")));
