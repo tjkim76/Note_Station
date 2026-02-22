@@ -3,6 +3,9 @@
 **Note Station**은 React와 SQLite를 기반으로 한 에버노트 스타일의 웹 노트 애플리케이션입니다.
 강력한 리치 텍스트 에디터, 실시간 데이터 동기화, 오프라인 지원(PWA) 등 다양한 생산성 도구를 제공합니다.
 
+<!-- 스크린샷 예시: assets 폴더를 만들고 이미지를 넣은 뒤 파일명을 맞춰주세요 -->
+![Note Station 메인 화면](./assets/main-screen.png)
+
 ## ✨ 주요 기능
 
 - **📝 리치 텍스트 에디터**: 굵게, 기울임, 밑줄, 취소선, 색상 변경, 정렬, 표/이미지 삽입 등 다양한 서식 지원
@@ -22,18 +25,11 @@
 - **💾 데이터 저장**: SQLite 브라우저 데이터베이스, localStorage 백업 및 자동 저장
 
 ## 🛠️ 기술 스택
-- **텍스트 서식**: 굵게, 기울임, 밑줄, 취소선
-- **단락 스타일**: H1, H2, H3, 본문
-- **목록**: 글머리 기호, 번호 매기기, 인용구
-- **정렬**: 왼쪽, 가운데, 오른쪽
-- **색상**: 글자 색상, 배경 색상
-- **링크**: URL 링크 삽입
 
 - **Frontend**: React 18, Vite, Tailwind CSS, Lucide React
 - **Backend**: Node.js, Express, WebSocket (ws)
 - **Database**: SQLite (Server), sql.js (Client/WASM), IndexedDB
 - **Tools**: concurrently, vite-plugin-pwa, vite-plugin-mkcert
-- **Mobile**: Capacitor (Android, iOS)
 
 ## 🚀 설치 및 실행 방법
 
@@ -66,30 +62,46 @@ npm run build
 
 빌드 결과물은 `dist` 폴더에 생성됩니다.
 
-### 4. 모바일 앱 빌드 (Android/iOS)
+## ✨ 주요 기능
 
-Capacitor를 사용하여 네이티브 앱으로 빌드할 수 있습니다. (Android Studio 또는 Xcode 필요)
+### 📝 리치 텍스트 에디터
+- **텍스트 서식**: 굵게, 기울임, 밑줄, 취소선
+- **단락 스타일**: H1, H2, H3, 본문
+- **목록**: 글머리 기호, 번호 매기기, 인용구
+- **정렬**: 왼쪽, 가운데, 오른쪽
+- **색상**: 글자 색상, 배경 색상
+- **링크**: URL 링크 삽입
 
-1. **의존성 설치 및 초기화**
-   ```bash
-   npm install
-   npx cap add android
-   npx cap add ios
-   ```
+### 🌐 번역 기능
+- 15개 언어 지원
+- 자동 언어 감지
+- Google Translate API 사용
 
-2. **프로젝트 빌드 및 동기화**
-   ```bash
-   npm run mobile:sync
-   ```
+### 📁 카테고리 관리
+- 커스텀 카테고리 생성
+- 카테고리별 노트 필터링
+- 카테고리 삭제 및 편집
 
-3. **네이티브 IDE 열기**
-   ```bash
-   # Android Studio 열기
-   npm run mobile:android
-   
-   # Xcode 열기 (macOS)
-   npm run mobile:ios
-   ```
+### 🔍 검색 기능
+- 제목 및 내용 검색
+- 실시간 필터링
+
+### 📷 이미지 지원
+- Ctrl+V로 이미지 붙여넣기
+- 자동 저장 및 관리
+
+### 💾 데이터 저장
+- SQLite 브라우저 데이터베이스
+- localStorage 백업
+- 자동 저장
+
+## 📦 기술 스택
+
+- **React 18** - UI 프레임워크
+- **Vite** - 빌드 도구
+- **Tailwind CSS** - 스타일링
+- **sql.js** - SQLite 데이터베이스
+- **Lucide React** - 아이콘
 
 ## 📂 프로젝트 구조
 
