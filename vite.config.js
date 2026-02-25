@@ -36,6 +36,19 @@ function ensurePwaAssets() {
   }
 }
 
+const proxyConfig = {
+  '/api': {
+    target: 'http://localhost:4000',
+    changeOrigin: true,
+    secure: false
+  },
+  '/uploads': {
+    target: 'http://localhost:4000',
+    changeOrigin: true,
+    secure: false
+  }
+}
+
 export default defineConfig(({ mode }) => ({
   esbuild: {
     drop: mode === 'production' ? ['console', 'debugger'] : [],
@@ -79,40 +92,31 @@ export default defineConfig(({ mode }) => ({
     })
   ],
   base: './',
+  resolve: {
+    alias: {
+      '@': path.resolve(__dirname, './src'),
+    },
+  },
   server: {
-    https: false,
+    // https: false, // mkcert 플러그인 사용 시 https 설정이 자동으로 처리되도록 주석 처리 또는 제거
     host: true,
-    proxy: {
-      '/api': {
-        target: 'http://localhost:4000',
-        changeOrigin: true,
-        secure: false
-      },
-      '/uploads': {
-        target: 'http://localhost:4000',
-        changeOrigin: true,
-        secure: false
-      }
-    }
+    proxy: proxyConfig
   },
   preview: {
     port: 3000,
     host: true,
-    proxy: {
-      '/api': {
-        target: 'http://localhost:4000',
-        changeOrigin: true,
-        secure: false
-      },
-      '/uploads': {
-        target: 'http://localhost:4000',
-        changeOrigin: true,
-        secure: false
-      }
-    }
+    proxy: proxyConfig
   },
   build: {
     outDir: 'dist',
-    emptyOutDir: true
+    emptyOutDir: true,
+    rollupOptions: {
+      output: {
+        manualChunks: {
+          vendor: ['react', 'react-dom'],
+          ui: ['lucide-react']
+        }
+      }
+    }
   }
 }))

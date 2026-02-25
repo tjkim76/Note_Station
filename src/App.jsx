@@ -11,10 +11,10 @@ import { useTemplates } from './hooks/useTemplates';
 import Login from './components/Login';
 import { summarizeText, getPlainText } from './utils/utils';
 
-const Sidebar = React.lazy(() => import('./components/Sidebar'));
-const NoteList = React.lazy(() => import('./components/NoteList'));
-const MainEditor = React.lazy(() => import('./components/MainEditor'));
-const Modals = React.lazy(() => import('./components/Modals'));
+const Sidebar = React.memo(React.lazy(() => import('./components/Sidebar')));
+const NoteList = React.memo(React.lazy(() => import('./components/NoteList')));
+const MainEditor = React.memo(React.lazy(() => import('./components/MainEditor')));
+const Modals = React.memo(React.lazy(() => import('./components/Modals')));
 
 export default function NoteStation() {
   // --- 상태 관리 (State Management) ---
@@ -280,6 +280,10 @@ export default function NoteStation() {
     reorderNote,
   } = useNotes(categories, selectedCategory, currentDbName, user);
 
+  // handleSummarize 최적화를 위한 ref (타이핑 시 함수 재생성 방지)
+  const editContentRef = useRef(editContent);
+  useEffect(() => { editContentRef.current = editContent; }, [editContent]);
+
   const toggleSidebar = useCallback(() => {
     setIsSidebarOpen(prev => !prev);
   }, []);
@@ -523,7 +527,7 @@ export default function NoteStation() {
 
     setIsSummarizing(true);
     try {
-      const textContent = getPlainText(isEditing ? editContent : selectedNote.content);
+      const textContent = getPlainText(isEditing ? editContentRef.current : selectedNote.content);
       const summary = await summarizeText(textContent, apiKey);
       setModals(prev => ({ ...prev, summary }));
     } catch (error) {
@@ -538,7 +542,7 @@ export default function NoteStation() {
     } finally {
       setIsSummarizing(false);
     }
-  }, [apiKey, selectedNote, isEditing, editContent]);
+  }, [apiKey, selectedNote, isEditing]); // editContent 의존성 제거
 
   // API 키 저장 핸들러
   const saveApiKey = useCallback(() => {
